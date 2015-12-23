@@ -1,0 +1,3 @@
+[submodule "Orange-Pineapple/Assets/Lockstep-Framework"]
+	path = Orange-Pineapple/Assets/Lockstep-Framework
+	url = ../Lockstep-Framework.git
