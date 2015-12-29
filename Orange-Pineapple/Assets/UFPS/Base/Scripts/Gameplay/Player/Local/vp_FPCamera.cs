@@ -563,8 +563,7 @@ public class vp_FPCamera : vp_Component
 	/// </summary>
 	protected virtual void UpdateInput()
 	{
-
-		if (Player.Dead.Active)
+        if (Player.Dead.Active)
 			return;
 
 		if (Player.InputSmoothLook.Get() == Vector2.zero)
