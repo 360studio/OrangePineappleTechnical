@@ -33,8 +33,8 @@ namespace OrangePineapple
 
         protected override void OnExecute(Command com)
         {
-            this.Rotation = com.Rotation;
-            this.HeightSlope = com.Value;
+            this.Rotation = com.GetData<Vector2d>();
+            //this.HeightSlope = com.Value;
         }
 
         void RecalculateShot () {
@@ -68,15 +68,21 @@ namespace OrangePineapple
             {
                 if (true)//Input.GetMouseButtonDown(0))
                 {
-                    Command com = new Command(this.Interfacer.ListenInput, Agent.Controller.ControllerID);
+                    #if false
+                    Command com = new Command(this.Interfacer.ListenInputID, Agent.Controller.ControllerID);
                     FastList<LSAgent> selection = new FastList<LSAgent>();
                     selection.Add(this.Agent);
-                    com.Select = new Selection(selection);
+                    com.SetData<Selection>(new Selection(selection));
                     float yAngle = (_trackedCamera.transform.eulerAngles.y) * Mathf.Deg2Rad;
                     com.Rotation = Vector2d.CreateFromAngle(yAngle);
                     float heightAngle = -(_trackedCamera.transform.eulerAngles.x) * Mathf.Deg2Rad;
                     com.Value = FixedMath.Create(Mathf.Sin(heightAngle));
                     CommandManager.SendCommand(com);
+                    #endif
+                }
+
+                if (Input.GetMouseButtonDown(0)) {
+
                 }
             }
 
