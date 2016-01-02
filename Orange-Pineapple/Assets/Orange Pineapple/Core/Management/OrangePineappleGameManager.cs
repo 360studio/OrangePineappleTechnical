@@ -4,6 +4,7 @@ using Lockstep;
 
 namespace OrangePineapple
 {
+    [RequireComponent (typeof (FPSHelper))]
     public class OrangePineappleGameManager : GameManager
     {
         private NetworkHelper _networkHelper = new Lockstep.Example.ExampleNetworkHelper ();
