@@ -70,6 +70,7 @@ public class FirstPersonCamera : MonoBehaviour
             if (angle < min && angle > max) {
                 angle = ClosestAngle (angle, min, max);
             }
+
         }
         return angle;
     }
