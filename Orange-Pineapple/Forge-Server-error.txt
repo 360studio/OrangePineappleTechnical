@@ -1,0 +1,7 @@
+Thread was being aborted
+  at (wrapper managed-to-native) System.Net.Sockets.Socket:RecvFrom_internal (intptr,byte[],int,int,System.Net.Sockets.SocketFlags,System.Net.SocketAddress&,int&)
+  at System.Net.Sockets.Socket.ReceiveFrom_nochecks_exc (System.Byte[] buf, Int32 offset, Int32 size, SocketFlags flags, System.Net.EndPoint& remote_end, Boolean throwOnError, System.Int32& error) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.Socket.ReceiveFrom_nochecks (System.Byte[] buf, Int32 offset, Int32 size, SocketFlags flags, System.Net.EndPoint& remote_end) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.Socket.ReceiveFrom (System.Byte[] buffer, System.Net.EndPoint& remoteEP) [0x00000] in <filename unknown>:0 
+  at BeardedManStudios.Network.CachedUdpClient.Receive (System.Net.IPEndPoint& remoteEP, System.String& endpoint) [0x0002e] in /Users/johnpan/Documents/Projects/Orange-Pineapple/Orange-Pineapple/Assets/Bearded Man Studios Inc/Forge Networking/MainScripts/Default/CachedUdpClient.cs:357 
+  at BeardedManStudios.Network.CrossPlatformUDP.ReadAsync (System.Object eventSender, System.ComponentModel.DoWorkEventArgs e) [0x0004e] in /Users/johnpan/Documents/Projects/Orange-Pineapple/Orange-Pineapple/Assets/Bearded Man Studios Inc/Forge Networking/MainScripts/Core/CrossPlatformUDP.cs:1906 

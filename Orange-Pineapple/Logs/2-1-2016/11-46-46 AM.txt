@@ -1,0 +1,9 @@
+2/1/2016 11:46:46 AM	[Trace]	#### Server boot ####
+2/1/2016 11:46:46 AM	[Fatal]	System.Net.Sockets.SocketException: Address already in use
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.TcpListener.Start (Int32 backlog) [0x00000] in <filename unknown>:0 
+  at System.Net.Sockets.TcpListener.Start () [0x00000] in <filename unknown>:0 
+  at DarkRift.DarkRiftServer.FinishBootstrapping (IManualDataProcessor manualDataProcessor, System.Type[] forceLoadPlugins) [0x00000] in <filename unknown>:0 
+2/1/2016 11:46:47 AM	[Log]	Shutting down server...
+2/1/2016 11:46:47 AM	[Trace]	Closing database
+2/1/2016 11:46:47 AM	[Trace]	#### Server stop ####
