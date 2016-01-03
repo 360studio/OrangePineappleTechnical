@@ -1,0 +1,7 @@
+3/1/2016 11:01:10 AM	[Trace]	#### Server boot ####
+3/1/2016 11:01:10 AM	[Log]	Server mounted, listening on port 4296
+3/1/2016 11:01:12 AM	[Log]	Connected: 127.0.0.1:53421
+3/1/2016 11:01:42 AM	[Log]	Shutting down server...
+3/1/2016 11:01:42 AM	[Log]	Disconnected: 127.0.0.1:53421
+3/1/2016 11:01:42 AM	[Trace]	Closing database
+3/1/2016 11:01:42 AM	[Trace]	#### Server stop ####
