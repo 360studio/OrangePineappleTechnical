@@ -1,6 +1,6 @@
 [submodule "Orange-Pineapple/Assets/Lockstep-Framework"]
 	path = Orange-Pineapple/Assets/Lockstep-Framework
 	url = ../Lockstep-Framework.git
-[submodule "Orange-Pineapple/Assets/PhotonNetworkHelper"]
-	path = Orange-Pineapple/Assets/PhotonNetworkHelper
-	url = ../PhotonNetworkHelper.git
+[submodule "Orange-Pineapple/Assets/DarkRiftNetworkHelper2"]
+	path = Orange-Pineapple/Assets/DarkRiftNetworkHelper2
+	url = ../DarkRiftNetworkHelper.git
