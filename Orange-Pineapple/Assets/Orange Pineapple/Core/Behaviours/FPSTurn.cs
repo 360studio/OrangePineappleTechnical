@@ -61,6 +61,7 @@ namespace Lockstep
         {
             CurRotation = Agent.Body.RotationalTransform.rotation;
             IsControlling = false;
+            this.EndControl();
             _cameraController.SetActive(false);
             Agent.Body.CanSetVisualRotation = false;
         }

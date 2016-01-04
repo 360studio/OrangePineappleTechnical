@@ -23,6 +23,7 @@ public class FPSHelper : BehaviourHelper {
         Instance = this;
     }
 
+    int comCount = 10;
     protected override void OnGameStart()
     {
         Command registerCom = new Command(RegisterCode);
@@ -43,6 +44,7 @@ public class FPSHelper : BehaviourHelper {
                 cont.AddToSelection(FPSAgent);
             }
         }
+
     }
 
 
