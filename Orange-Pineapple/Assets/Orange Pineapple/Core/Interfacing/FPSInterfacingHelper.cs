@@ -23,7 +23,6 @@ public class FPSInterfacingHelper : InterfacingHelper
         if (FPSHelper.Instance.FPSAgent != null)
         {
             Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
             if (input != lastInput)
             {
                 lastInput = input;

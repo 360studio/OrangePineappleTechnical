@@ -69,19 +69,18 @@ namespace Lockstep
         {
 
 
-            if (this.IsControlling)
+            if (false && this.IsControlling)
             {
                 CurRotation = CameraController.transform.rotation;
             } else
             {
                 float lerpAmount = 10f;
-
-                CurRotation = Quaternion.Lerp(CurRotation, this.TargetVisualRotation, lerpAmount * Time.deltaTime);
-
+                CurRotation = Quaternion.Slerp(CurRotation, this.TargetVisualRotation, lerpAmount * Time.deltaTime);
             }
+
             Vector3 curRotationEulers = CurRotation.eulerAngles;
             VisualBody.transform.eulerAngles = new Vector3(0, curRotationEulers.y, 0);
-            VisualHead.transform.eulerAngles = new Vector3(curRotationEulers.x, 0, 0);
+            VisualHead.transform.localRotation = Quaternion.Euler(curRotationEulers.x, curRotationEulers.y, 0);
         }
 
         protected override void OnExecute(Command com)
