@@ -12,11 +12,22 @@ namespace Lockstep
 
         [SerializeField]
         private Transform _head;
-        public Transform Head {get {return _head;}}
-        public Vector3 HeadPosition {get; private set;}
 
-        public Vector2dHeight Forward {get; private set;}
-        public long Slope {get; private set;}
+        public Transform VisualHead { get { return _head; } }
+
+        [SerializeField]
+        private Transform _body;
+
+        public Transform VisualBody { get { return _body; } }
+
+
+        public Vector2dHeight Forward { get; private set; }
+
+        public Quaternion TargetVisualRotation { get; private set; }
+
+        public Quaternion CurRotation { get; private set; }
+
+        public long Slope { get; private set; }
 
         private bool _isControlling;
 
@@ -32,7 +43,7 @@ namespace Lockstep
                 {
                     if (value == false)
                     {
-                        EndControl ();
+                        EndControl();
                     } else
                     {
                         StartControl();
@@ -44,63 +55,81 @@ namespace Lockstep
 
         protected override void OnSetup()
         {
-            HeadPosition = Head.localPosition;
         }
 
         protected override void OnInitialize()
         {
+            CurRotation = Agent.Body.RotationalTransform.rotation;
             IsControlling = false;
             _cameraController.SetActive(false);
+            Agent.Body.CanSetVisualRotation = false;
         }
 
         protected override void OnVisualize()
         {
-            if (this.IsControlling) {
-            
-            }
-            else {
+
+
+            if (this.IsControlling)
+            {
+                CurRotation = CameraController.transform.rotation;
+            } else
+            {
+                float lerpAmount = 10f;
+
+                CurRotation = Quaternion.Lerp(CurRotation, this.TargetVisualRotation, lerpAmount * Time.deltaTime);
 
             }
+            Vector3 curRotationEulers = CurRotation.eulerAngles;
+            VisualBody.transform.eulerAngles = new Vector3(0, curRotationEulers.y, 0);
+            VisualHead.transform.eulerAngles = new Vector3(curRotationEulers.x, 0, 0);
         }
+
         protected override void OnExecute(Command com)
         {
-            Vector2dHeight forward = com.GetData<Vector2dHeight> ();
+            Vector2dHeight forward = com.GetData<Vector2dHeight>();
             Forward = forward;
             this.CalculateRotationValues();
         }
-        private void CalculateRotationValues () 
+
+        private void CalculateRotationValues()
         {
             Vector2d newRot = Forward.ToVector2d();
             long newRotMag;
             newRot.Normalize(out newRotMag);
             Slope = Forward.Height.Div(newRotMag);
-            Agent.Body.Rotation = newRot;
+            this.Agent.Body.Rotation = newRot;
+            this.TargetVisualRotation = Quaternion.LookRotation(Forward.ToVector3());
         }
-        private void StartControl ()
+
+        private void StartControl()
         {
             _cameraController.SetActive(true);
-            Head.SetParent(Agent.Body.PositionalTransform, true);
-
         }
-        private void EndControl ()
+
+        private void EndControl()
         {
             _cameraController.SetActive(false);
-            Head.SetParent(Agent.Body.RotationalTransform, true);
-            Head.localPosition = HeadPosition;
-            Head.localRotation = Quaternion.identity;
         }
+
 
         protected override void OnSimulate()
         {
             base.OnSimulate();
         }
 
-        public Command GenerateTurnCommand (Vector3 forwards) {
-            Command com = new Command(this.Interfacer.ListenInputID,this.Agent.Controller.ControllerID);
+        public Command GenerateTurnCommand(Vector3 forwards)
+        {
+            Command com = new Command(this.Interfacer.ListenInputID, this.Agent.Controller.ControllerID);
             Vector2dHeight vecHeight = new Vector2dHeight(forwards);
-            com.Add<Vector2dHeight> (vecHeight);
+            com.Add<Vector2dHeight>(vecHeight);
             return com;
 
+        }
+
+        void Reset()
+        {
+            this._body = this.transform.FindChild("Body").transform;
+            this._head = this.transform.FindChild("Head").transform;
         }
     }
 }
