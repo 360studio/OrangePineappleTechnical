@@ -70,7 +70,7 @@ namespace Lockstep
         {
 
 
-            if (false && this.IsControlling)
+            if (this.IsControlling)
             {
                 CurRotation = CameraController.transform.rotation;
             } else
