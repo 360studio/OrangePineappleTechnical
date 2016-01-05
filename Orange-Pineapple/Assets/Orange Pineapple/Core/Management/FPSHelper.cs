@@ -24,18 +24,23 @@ public class FPSHelper : BehaviourHelper {
     }
 
     int comCount = 10;
+    int comHash {get {return comCount++;}}
     protected override void OnGameStart()
     {
         Command registerCom = new Command(RegisterCode);
         registerCom.Add<DefaultData> (new DefaultData(DataType.Int, ClientManager.ClientID));
-        CommandManager.SendCommand(registerCom);
+        for (int i = 0; i < 2; i++)
+        {
+            CommandManager.SendCommand(registerCom);
+        }
     }
+
 
     protected override void OnRawExecute(Command com)
     {
         if (com.LeInput == RegisterCode) {
             AgentController cont = AgentController.Create();
-            LSAgent agent = cont.CreateAgent (this._FPSAgentCode);
+            var agent = cont.CreateAgent(this._FPSAgentCode);
             int playerID = (int)com.GetData<DefaultData> ().Value;
             if (playerID == ClientManager.ClientID) {
                 PlayerManager.AddController(cont);
