@@ -29,7 +29,7 @@ public class FPSHelper : BehaviourHelper {
     {
         Command registerCom = new Command(RegisterCode);
         registerCom.Add<DefaultData> (new DefaultData(DataType.Int, ClientManager.ClientID));
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 1; i++)
         {
             CommandManager.SendCommand(registerCom);
         }
@@ -38,7 +38,7 @@ public class FPSHelper : BehaviourHelper {
 
     protected override void OnRawExecute(Command com)
     {
-        if (com.LeInput == RegisterCode) {
+        if (com.InputCode == RegisterCode) {
             AgentController cont = AgentController.Create();
             var agent = cont.CreateAgent(this._FPSAgentCode);
             int playerID = (int)com.GetData<DefaultData> ().Value;

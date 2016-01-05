@@ -21,6 +21,9 @@ MonoBehaviour:
   - _name: Primary
   - _name: Register
   - _name: Rotation
+  - _name: StartShoot
+  - _name: EndShoot
+  - _name: None
   _projectileData: []
   _effectData: []
   _abilityData:
@@ -58,4 +61,11 @@ MonoBehaviour:
     _script:
       _classRef: Lockstep.FPSTurn, Assembly-CSharp
     _listenInputCode: Rotation
+    _informationGather: 0
+  - _name: FPSShoot
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.FPSShoot, Assembly-CSharp
+    _listenInputCode: None
     _informationGather: 0

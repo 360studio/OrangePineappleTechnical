@@ -21,6 +21,7 @@ public class FirstPersonCamera : MonoBehaviour
     void Start()
     {
         targetRot = transform.rotation;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     Quaternion targetRot;
@@ -42,6 +43,10 @@ public class FirstPersonCamera : MonoBehaviour
         {
             transform.rotation = targetRot;
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Cursor.lockState = Cursor.lockState != CursorLockMode.Locked ? CursorLockMode.Locked : CursorLockMode.None;
         }
     }
 

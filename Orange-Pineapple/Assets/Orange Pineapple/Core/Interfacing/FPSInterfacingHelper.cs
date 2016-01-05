@@ -16,19 +16,35 @@ public class FPSInterfacingHelper : InterfacingHelper
 
     double accumulator;
     int comCount = 101;
-    int comHash {get {return (ClientManager.ClientID ^ comCount++);}}
+
+    int comHash { get { return (ClientManager.ClientID ^ comCount++); } }
 
     private FPSMove _mover;
-    FPSMove Mover {
-        get {return _mover??(_mover = FPSHelper.Instance.FPSAgent.GetAbility<FPSMove>());}
+
+    FPSMove Mover
+    {
+        get { return _mover ?? (_mover = FPSHelper.Instance.FPSAgent.GetAbility<FPSMove>()); }
     }
+
     LSAgent _agent;
-    LSAgent Agent {
-        get {return _agent ?? (_agent = FPSHelper.Instance.FPSAgent);}
+
+    LSAgent Agent
+    {
+        get { return _agent ?? (_agent = FPSHelper.Instance.FPSAgent); }
     }
+
     FPSTurn _turner;
-    FPSTurn Turner {
-        get {return _turner??(_turner = FPSHelper.Instance.FPSAgent.GetAbility<FPSTurn>());}
+
+    FPSTurn Turner
+    {
+        get { return _turner ?? (_turner = FPSHelper.Instance.FPSAgent.GetAbility<FPSTurn>()); }
+    }
+
+    FPSShoot _shooter;
+
+    FPSShoot Shooter
+    {
+        get { return _shooter ?? (_shooter = FPSHelper.Instance.FPSAgent.GetAbility<FPSShoot>()); }
     }
 
     protected override void OnVisualize()
@@ -45,8 +61,9 @@ public class FPSInterfacingHelper : InterfacingHelper
                 {
                     lastInput = input;
                     Command com = Mover.GenerateMoveCommand(input);
-                    if (Agent.Controller.SelectionChanged) {
-                        com.Add (new Selection(Agent.Controller.SelectedAgents));
+                    if (Agent.Controller.SelectionChanged)
+                    {
+                        com.Add(new Selection(Agent.Controller.SelectedAgents));
                     }
                     CommandManager.SendCommand(com);
                 }
@@ -63,5 +80,24 @@ public class FPSInterfacingHelper : InterfacingHelper
                 }
             }
         }
+
+        #if true
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Command com;
+            if (Shooter.GenerateFireCommand(true, out com))
+            {
+                 CommandManager.SendCommand(com, true);
+            }
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            Command com;
+            if (Shooter.GenerateFireCommand(false, out com))
+            {
+                CommandManager.SendCommand(com, true);
+            }
+        }
+        #endif
     }
 }

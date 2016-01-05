@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Lockstep
 {
@@ -20,14 +21,22 @@ namespace Lockstep
 
         public Transform VisualBody { get { return _body; } }
 
+        [SerializeField, FixedNumber]
+        private long _cameraHeight;
+        public long CameraHeight {get {return _cameraHeight;}}
+
 
         public Vector2dHeight Forward { get; private set; }
+
+        public Vector2d ForwardRotation { get; private set; }
+
+        public long Slope { get; private set; }
+
 
         public Quaternion TargetVisualRotation { get; private set; }
 
         public Quaternion CurRotation { get; private set; }
 
-        public long Slope { get; private set; }
 
         private bool _isControlling;
 
@@ -96,6 +105,7 @@ namespace Lockstep
             Vector2d newRot = Forward.ToVector2d();
             long newRotMag;
             newRot.Normalize(out newRotMag);
+            this.ForwardRotation = newRot;
             Slope = Forward.Height.Div(newRotMag);
             this.Agent.Body.Rotation = newRot;
             this.TargetVisualRotation = Quaternion.LookRotation(Forward.ToVector3());
@@ -124,6 +134,17 @@ namespace Lockstep
             com.Add<Vector2dHeight>(vecHeight);
             return com;
 
+        }
+
+        public IEnumerable<LSBody> GetBodiesInLine(long range)
+        {
+            Vector2d start = this.Agent.Body.Position;
+            Vector2d end = start + this.ForwardRotation * range;
+            Debug.Log((Agent.Body.HeightPos + CameraHeight).ToFormattedDouble());
+            foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
+            {
+                yield return body;
+            }
         }
 
         void Reset()
