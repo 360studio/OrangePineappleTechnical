@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   HostType: 1
-  Protocol: 1
+  Protocol: 0
   ServerAddress: 
   ServerPort: 5055
   AppID: fd751257-77f4-4198-907c-ad4101630e9f
-  PreferredRegion: 1
+  PreferredRegion: 0
   EnabledRegions: -1
   JoinLobby: 1
   EnableLobbyStatistics: 0

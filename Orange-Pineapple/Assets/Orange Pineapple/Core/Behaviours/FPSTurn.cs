@@ -140,7 +140,6 @@ namespace Lockstep
         {
             Vector2d start = this.Agent.Body.Position;
             Vector2d end = start + this.ForwardRotation * range;
-            Debug.Log((Agent.Body.HeightPos + CameraHeight).ToFormattedDouble());
             foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
             {
                 yield return body;
