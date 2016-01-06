@@ -465,10 +465,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _environmentBodies:
-  - Body: {fileID: 2049973961}
+  - Body: {fileID: 132334610}
     Position:
-      _x: 303431
-      _y: -823787
+      _x: -227409
+      _y: 1966080
+      _height: 262144
+    Rotation:
+      x: 0
+      y: 65536
+  - Body: {fileID: 386060026}
+    Position:
+      _x: 131072
+      _y: 1184890
+      _height: -65536
+    Rotation:
+      x: 0
+      y: 65536
+  - Body: {fileID: 435485525}
+    Position:
+      _x: 131072
+      _y: 1184890
+      _height: 89784
+    Rotation:
+      x: 0
+      y: 65536
+  - Body: {fileID: 663797717}
+    Position:
+      _x: -461373
+      _y: 1370357
+      _height: 131072
+    Rotation:
+      x: 0
+      y: 65536
+  - Body: {fileID: 878969685}
+    Position:
+      _x: -1011220
+      _y: 131072
       _height: 0
     Rotation:
       x: 0
@@ -477,14 +509,6 @@ MonoBehaviour:
     Position:
       _x: -15073
       _y: -412876
-      _height: 0
-    Rotation:
-      x: 0
-      y: 65536
-  - Body: {fileID: 878969685}
-    Position:
-      _x: -1011220
-      _y: 131072
       _height: 0
     Rotation:
       x: 0
@@ -501,52 +525,28 @@ MonoBehaviour:
     Position:
       _x: 777912
       _y: 346030
+      _height: -171048
+    Rotation:
+      x: 0
+      y: 65536
+  - Body: {fileID: 2049973961}
+    Position:
+      _x: 303431
+      _y: -823787
       _height: 0
     Rotation:
       x: 0
       y: 65536
-  - Body: {fileID: 435485525}
-    Position:
-      _x: 131072
-      _y: 1184890
-      _height: 89784
-    Rotation:
-      x: 0
-      y: 65536
-  - Body: {fileID: 386060026}
-    Position:
-      _x: 131072
-      _y: 1184890
-      _height: -65536
-    Rotation:
-      x: 0
-      y: 65536
-  - Body: {fileID: 663797717}
-    Position:
-      _x: -461373
-      _y: 1370357
-      _height: 65536
-    Rotation:
-      x: 0
-      y: 65536
-  - Body: {fileID: 132334610}
-    Position:
-      _x: -227409
-      _y: 1966080
-      _height: 262144
-    Rotation:
-      x: 0
-      y: 65536
   _environmentObjects:
-  - {fileID: 2049973960}
-  - {fileID: 1180850446}
+  - {fileID: 132334615}
+  - {fileID: 386060025}
+  - {fileID: 435485524}
+  - {fileID: 663797716}
   - {fileID: 878969684}
+  - {fileID: 1180850446}
   - {fileID: 1690218209}
   - {fileID: 1874007603}
-  - {fileID: 435485524}
-  - {fileID: 386060025}
-  - {fileID: 663797716}
-  - {fileID: 132334615}
+  - {fileID: 2049973960}
 --- !u!4 &357143950
 Transform:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 663797715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 1, z: 20.91}
+  m_LocalPosition: {x: -7.04, y: 2, z: 20.91}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children:
   - {fileID: 771531549}
@@ -957,7 +957,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 878969683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.43, y: -2.29, z: 2}
+  m_LocalPosition: {x: -15.43, y: 0, z: 2}
   m_LocalScale: {x: 2, y: 5, z: 2}
   m_Children:
   - {fileID: 1825951412}
@@ -1633,7 +1633,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1874007602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.87, y: 0, z: 5.28}
+  m_LocalPosition: {x: 11.87, y: -2.61, z: 5.28}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children:
   - {fileID: 334575449}

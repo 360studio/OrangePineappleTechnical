@@ -40,7 +40,7 @@ namespace Lockstep
             base.DoRawExecute = true;
             StartShootCode = InputCodeManager.GetCodeID("StartShoot");
             EndShootCode = InputCodeManager.GetCodeID("EndShoot");
- 
+            IsFiring = true;
         }
 
         protected override void OnRawExecute(Command com)
@@ -50,7 +50,7 @@ namespace Lockstep
                 if (com.InputCode == StartShootCode)
                     this.IsFiring = true;
                 else if (com.InputCode == EndShootCode)
-                    this.IsFiring = false;
+                    this.IsFiring = true;//false;
             }
         }
 

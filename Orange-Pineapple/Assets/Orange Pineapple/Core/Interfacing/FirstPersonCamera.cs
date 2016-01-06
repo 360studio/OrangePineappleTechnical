@@ -4,6 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class FirstPersonCamera : MonoBehaviour
 {
+    public bool locked;
     [SerializeField]
     float XSensitivity = 2;
     [SerializeField]
@@ -28,6 +29,7 @@ public class FirstPersonCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (locked) return;
         float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
         float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
