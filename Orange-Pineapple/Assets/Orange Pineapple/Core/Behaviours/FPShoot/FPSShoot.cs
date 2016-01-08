@@ -50,7 +50,7 @@ namespace Lockstep
                 if (com.InputCode == StartShootCode)
                     this.IsFiring = true;
                 else if (com.InputCode == EndShootCode)
-                    this.IsFiring = true;//false;
+                    this.IsFiring = false;
             }
         }
 
@@ -102,6 +102,7 @@ namespace Lockstep
             this.FireCount = FirePeriod;
             foreach (var body in Turner.GetBodiesInLine(FixedMath.Create(1000)))
             {
+                if (body.ID != this.Agent.Body.ID)
                 body.TestFlash();
             }
         }
