@@ -19,6 +19,7 @@ namespace Lockstep
 
         #region Lockstep
 
+        [Lockstep (true)]
         public bool IsFiring { get; private set; }
 
         #endregion
@@ -40,7 +41,7 @@ namespace Lockstep
             base.DoRawExecute = true;
             StartShootCode = InputCodeManager.GetCodeID("StartShoot");
             EndShootCode = InputCodeManager.GetCodeID("EndShoot");
-            IsFiring = true;
+            IsFiring = false;
         }
 
         protected override void OnRawExecute(Command com)
@@ -112,9 +113,5 @@ namespace Lockstep
 
         }
 
-        void OnGUI()
-        {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), "X");
-        }
     }
 }

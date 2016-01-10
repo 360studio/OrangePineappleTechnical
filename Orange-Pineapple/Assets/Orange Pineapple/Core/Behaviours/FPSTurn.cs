@@ -142,6 +142,7 @@ namespace Lockstep
             Vector2d end = start + this.ForwardRotation * range;
             foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
             {
+                if (body.ID == Agent.Body.ID) continue;
                 yield return body;
             }
         }

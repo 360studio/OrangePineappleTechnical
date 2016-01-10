@@ -24,6 +24,7 @@ MonoBehaviour:
   - _name: StartShoot
   - _name: EndShoot
   - _name: None
+  - _name: CoverMove
   _projectileData: []
   _effectData: []
   _abilityData:
@@ -68,4 +69,11 @@ MonoBehaviour:
     _script:
       _classRef: Lockstep.FPSShoot, Assembly-CSharp
     _listenInputCode: None
+    _informationGather: 0
+  - _name: CoverMove
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: CoverMove, Assembly-CSharp
+    _listenInputCode: CoverMove
     _informationGather: 0

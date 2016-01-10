@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11422876}
   - 114: {fileID: 11464192}
   - 114: {fileID: 11413744}
+  - 114: {fileID: 11464694}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -547,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathTime: 64
+  _myAgentCode: 
   _agentType: 0
   _globalID: 0
   _statsBarOffset: {x: 0, y: 1, z: 0}
@@ -596,7 +598,6 @@ MonoBehaviour:
   _halfHeight: 0
   _radius: 32112
   _immovable: 0
-  Immovable: 0
   _basePriority: 0
   _vertices: []
   _height: 163840
@@ -617,6 +618,26 @@ MonoBehaviour:
   _head: {fileID: 475244}
   _body: {fileID: 458898}
   _cameraHeight: 163840
+--- !u!114 &11464694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894d9002386df4e08962743c2b091f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Destination:
+    x: 0
+    y: 0
+  _canMove: 1
+  _canTurn: 1
+  _speed: 524288
+  _acceleration: 65536
+  _flying: 1
+  DrawPath: 1
 --- !u!114 &11466826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,6 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8821480040824a32ac367507dceffd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  locked: 0
   XSensitivity: 3
   YSensitivity: 3
   smooth: 1

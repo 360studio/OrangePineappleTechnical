@@ -12,6 +12,7 @@ public class FPSInterfacingHelper : InterfacingHelper
     }
 
     private Vector2 lastInput;
+    private float lastHorInput;
     Quaternion lastRotation;
 
     double accumulator;
@@ -56,6 +57,7 @@ public class FPSInterfacingHelper : InterfacingHelper
             accumulator %= sendRate;
             if (FPSHelper.Instance.FPSAgent != null)
             {
+                /*
                 Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 if (input != lastInput)
                 {
@@ -65,7 +67,19 @@ public class FPSInterfacingHelper : InterfacingHelper
                     {
                         com.Add(new Selection(Agent.Controller.SelectedAgents));
                     }
-                    CommandManager.SendCommand(com);
+                    SendCommand(com);
+                }
+                */
+
+                float horInput = Input.GetAxis("Horizontal");
+                if (horInput != lastHorInput) {
+                    Command com = Agent.GetAbility<CoverMove> ().GenerateMovementCommand(horInput);
+
+                    if (com != null) {
+                    lastHorInput = horInput;
+
+                    SendCommand(com);
+                    }
                 }
 
                 Quaternion curRotation = FPSHelper.Instance.FPSAgent.GetAbility<FPSTurn>().CameraController.transform.rotation;
@@ -73,9 +87,8 @@ public class FPSInterfacingHelper : InterfacingHelper
                 {
                     Vector3 forward = curRotation * Vector3.forward;
                     Command com = FPSHelper.Instance.FPSAgent.GetAbility<FPSTurn>().GenerateTurnCommand(forward);
-                    if (Agent.Controller.SelectionChanged)
-                        com.Add(new Selection(Agent.Controller.SelectedAgents));
-                    CommandManager.SendCommand(com);
+
+                    SendCommand(com);
                     lastRotation = curRotation;
                 }
             }
@@ -87,7 +100,7 @@ public class FPSInterfacingHelper : InterfacingHelper
             Command com;
             if (Shooter.GenerateFireCommand(true, out com))
             {
-                 CommandManager.SendCommand(com, true);
+                 SendCommand(com, true);
             }
         }
         if (Input.GetButtonUp("Fire1"))
@@ -95,9 +108,19 @@ public class FPSInterfacingHelper : InterfacingHelper
             Command com;
             if (Shooter.GenerateFireCommand(false, out com))
             {
-                CommandManager.SendCommand(com, true);
+                SendCommand(com, true);
             }
         }
+        if (Input.GetKeyDown(KeyCode.E)) {
+            SendCommand(Agent.GetAbility<CoverMove> ().GenerateTransitionCommand(), true);
+        }
         #endif
+    }
+
+    public void SendCommand (Command com, bool immediate = false) {
+        if (com == null) return;
+        if (Agent.Controller.SelectionChanged)
+            com.Add(new Selection(Agent.Controller.SelectedAgents));
+        CommandManager.SendCommand(com, immediate);
     }
 }
