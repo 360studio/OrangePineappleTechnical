@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d6c482752cb49aa93b5f9421c22651, type: 3}
+  m_Name: NewDatabase
+  m_EditorClassIdentifier: 
+  _agentData:
+  - _name: Shooter
+    _description: 
+    _icon: {fileID: 0}
+    _prefab: {fileID: 123852, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
+  _inputData:
+  - _name: Movement
+  - _name: Primary
+  - _name: Register
+  - _name: Rotation
+  - _name: StartShoot
+  - _name: EndShoot
+  - _name: None
+  - _name: CoverMove
+  _projectileData: []
+  _effectData: []
+  _abilityData:
+  - _name: Move
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.Move, Assembly-CSharp
+    _listenInputCode: 
+    _informationGather: 0
+  - _name: Scan
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.Scan, Assembly-CSharp
+    _listenInputCode: 
+    _informationGather: 0
+  - _name: Stop
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.Stop, Assembly-CSharp
+    _listenInputCode: 
+    _informationGather: 0
+  - _name: FPSMove
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: FPSMove, Assembly-CSharp
+    _listenInputCode: Movement
+    _informationGather: 0
+  - _name: FPSTurn
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.FPSTurn, Assembly-CSharp
+    _listenInputCode: Rotation
+    _informationGather: 0
+  - _name: FPSShoot
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: Lockstep.FPSShoot, Assembly-CSharp
+    _listenInputCode: None
+    _informationGather: 0
+  - _name: CoverMove
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: CoverMove, Assembly-CSharp
+    _listenInputCode: CoverMove
+    _informationGather: 0
