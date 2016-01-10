@@ -1,0 +1,6 @@
+[submodule "Technical/Assets/Lockstep-Framework"]
+	path = Technical/Assets/Lockstep-Framework
+	url = ../Lockstep-Framework.git
+[submodule "Technical/Assets/PhotonNetworkHelper2"]
+	path = Technical/Assets/PhotonNetworkHelper2
+	url = ../PhotonNetworkHelper.git
