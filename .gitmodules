@@ -1,0 +1,3 @@
+[submodule "Technical/Assets/LockstepFramework2"]
+	path = Technical/Assets/LockstepFramework2
+	url = ../LockstepFramework.git
