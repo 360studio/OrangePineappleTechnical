@@ -596,7 +596,7 @@ MonoBehaviour:
   _layer: 0
   _halfWidth: 0
   _halfHeight: 0
-  _radius: 32112
+  _radius: 26214
   _immovable: 0
   _basePriority: 0
   _vertices: []
@@ -636,7 +636,7 @@ MonoBehaviour:
   _canTurn: 1
   _speed: 524288
   _acceleration: 65536
-  _flying: 1
+  _canPathfind: 1
   DrawPath: 1
 --- !u!114 &11466826
 MonoBehaviour:

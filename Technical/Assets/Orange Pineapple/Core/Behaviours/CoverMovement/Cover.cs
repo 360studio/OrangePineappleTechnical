@@ -11,7 +11,7 @@ namespace Lockstep
         /// The points of the cover forming consecutive line segmenets.
         /// </summary>
         [SerializeField]
-        private Vector2d[] _points;
+        private Vector2d[] _points = new Vector2d[2];
 
         public Vector2d[] Points { get { return _points; } }
 
