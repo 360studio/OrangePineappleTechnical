@@ -21,9 +21,27 @@ namespace Lockstep
 
         public Transform VisualBody { get { return _body; } }
 
-        [SerializeField, FixedNumber]
+        [SerializeField,FixedNumber]
+        private long _baseCameraHeight = FixedMath.One * 2;
+
         private long _cameraHeight;
-        public long CameraHeight {get {return _cameraHeight;}}
+
+        [Lockstep(true)]
+        public long CameraHeight
+        {
+            get { return _cameraHeight; }
+            set
+            {
+                if (_cameraHeight != value)
+                {
+                    _cameraHeight = value;
+
+                    Vector3 camPos = CameraController.transform.localPosition;
+                    camPos.y = value.ToFloat();
+                    CameraController.transform.localPosition = camPos;
+                }
+            }
+        }
 
 
         public Vector2dHeight Forward { get; private set; }
@@ -64,6 +82,7 @@ namespace Lockstep
 
         protected override void OnSetup()
         {
+            CameraHeight = _baseCameraHeight;
         }
 
         protected override void OnInitialize()
@@ -142,7 +161,10 @@ namespace Lockstep
             Vector2d end = start + this.ForwardRotation * range;
             foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
             {
-                if (body.ID == Agent.Body.ID) continue;
+                if (body.ID == Agent.Body.ID)
+                {
+                    continue;
+                }
                 yield return body;
             }
         }

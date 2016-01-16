@@ -34,6 +34,7 @@ GameObject:
   - 114: {fileID: 11464192}
   - 114: {fileID: 11413744}
   - 114: {fileID: 11464694}
+  - 114: {fileID: 11424378}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -536,6 +537,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20480
   _acceleration: 45875
+--- !u!114 &11424378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bceb6fd32ff04a86a62a46548ecbff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalHeight: 131072
+  _crouchHeight: 65536
 --- !u!114 &11432920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -548,7 +562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathTime: 64
-  _myAgentCode: 
   _agentType: 0
   _globalID: 0
   _statsBarOffset: {x: 0, y: 1, z: 0}
@@ -617,7 +630,7 @@ MonoBehaviour:
   _cameraController: {fileID: 100198}
   _head: {fileID: 475244}
   _body: {fileID: 458898}
-  _cameraHeight: 163840
+  _baseCameraHeight: 131072
 --- !u!114 &11464694
 MonoBehaviour:
   m_ObjectHideFlags: 1

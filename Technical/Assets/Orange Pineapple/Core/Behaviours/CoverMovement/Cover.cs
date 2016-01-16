@@ -32,7 +32,7 @@ namespace Lockstep
 
         public ushort ID {get;set;}
 
-        public uint Version {get; set;}
+        internal uint Version {get; set;}
 
         public LSBody Body {get; private set;}
 
@@ -42,7 +42,7 @@ namespace Lockstep
             private set;
         }
         private bool inited = false;
-        protected override void OnInitialize()
+        protected override void OnLateInitialize()
         {
             Body = this.GetComponent<LSBody> ();
             inited = true;

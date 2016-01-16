@@ -72,13 +72,15 @@ public class FPSInterfacingHelper : InterfacingHelper
                 */
 
                 float horInput = Input.GetAxis("Horizontal");
-                if (horInput != lastHorInput) {
-                    Command com = Agent.GetAbility<CoverMove> ().GenerateMovementCommand(horInput);
+                if (horInput != lastHorInput)
+                {
+                    Command com = Agent.GetAbility<CoverMove>().GenerateMovementCommand(horInput);
 
-                    if (com != null) {
-                    lastHorInput = horInput;
+                    if (com != null)
+                    {
+                        lastHorInput = horInput;
 
-                    SendCommand(com);
+                        SendCommand(com);
                     }
                 }
 
@@ -100,7 +102,7 @@ public class FPSInterfacingHelper : InterfacingHelper
             Command com;
             if (Shooter.GenerateFireCommand(true, out com))
             {
-                 SendCommand(com, true);
+                SendCommand(com, true);
             }
         }
         if (Input.GetButtonUp("Fire1"))
@@ -111,16 +113,31 @@ public class FPSInterfacingHelper : InterfacingHelper
                 SendCommand(com, true);
             }
         }
-        if (Input.GetKeyDown(KeyCode.E)) {
-            SendCommand(Agent.GetAbility<CoverMove> ().GenerateTransitionCommand(), true);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SendCommand(Agent.GetAbility<CoverMove>().GenerateTransitionCommand(), true);
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            SendCommand(Agent.GetAbility<FPSCrouch>().GenerateCrouchCommand(true), true);
+        }
+        if (Input.GetButtonUp("Jump")) {
+            SendCommand(Agent.GetAbility<FPSCrouch>().GenerateCrouchCommand(false),true);
         }
         #endif
-    }
 
-    public void SendCommand (Command com, bool immediate = false) {
-        if (com == null) return;
+        if (sendOut) {
+            CommandManager.SendOut();
+        }
+    }
+    bool sendOut;
+    public void SendCommand(Command com, bool immediate = false)
+    {
+        if (com == null)
+            return;
         if (Agent.Controller.SelectionChanged)
             com.Add(new Selection(Agent.Controller.SelectedAgents));
-        CommandManager.SendCommand(com, immediate);
+        CommandManager.SendCommand(com, false);
+        if (immediate) sendOut = true;
     }
 }

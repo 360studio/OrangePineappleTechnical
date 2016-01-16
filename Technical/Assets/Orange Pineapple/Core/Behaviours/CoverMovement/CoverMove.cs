@@ -3,7 +3,7 @@ using System.Collections;
 using Lockstep;
 [CustomActiveAbility]
 public class CoverMove : Move {
-    FPSTurn cachedTurn {get; set;}
+    FPSTurn CachedTurn {get; set;}
     Cover CurrentCover {get; set;}
     private long Input;
     [Lockstep (true)]
@@ -13,7 +13,7 @@ public class CoverMove : Move {
     protected override void OnSetup()
     {
         base.OnSetup();
-        cachedTurn = Agent.GetAbility<FPSTurn>();
+        CachedTurn = Agent.GetAbility<FPSTurn>();
     }
 
     protected override void OnInitialize()
@@ -38,10 +38,12 @@ public class CoverMove : Move {
     protected override void OnSimulate()
     {
         if (IsTransitioning == false) {
+            if (CurrentCover != null) {
             if (Input != 0) {
                 
                 CurrentDegree += CurrentCover.GetDegreeSpeed(base.Speed.Mul(Input / 2));
                 Agent.Body.Position = CurrentCover.GetDegreePoint(CurrentDegree);
+            }
             }
         }
         base.OnSimulate();
@@ -58,7 +60,7 @@ public class CoverMove : Move {
     }
 
     public Command GenerateTransitionCommand () {
-        Cover cover = CoverManager.FindCover(cachedTurn.GetBodiesInLine(FixedMath.One * 200),CurrentCover);
+        Cover cover = CoverManager.FindCover(CachedTurn.GetBodiesInLine(FixedMath.One * 200),CurrentCover);
         if (cover != null) {
             Command com = new Command(this.Interfacer.ListenInputID,this.Agent.Controller.ControllerID);
             com.Add<DefaultData> (new DefaultData(DataType.UShort,cover.ID));

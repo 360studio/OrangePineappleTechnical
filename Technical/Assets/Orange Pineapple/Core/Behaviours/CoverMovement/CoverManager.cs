@@ -4,7 +4,7 @@ using Lockstep;
 using System.Collections.Generic;
 public static class CoverManager {
     private static FastBucket<Cover> Covers = new FastBucket<Cover> ();
-    public static uint _Version {get; private set;}
+    internal static uint _Version {get; private set;}
 
     public static void Initialize () {
         _Version++;
@@ -32,8 +32,12 @@ public static class CoverManager {
             if (body.GetComponent<Cover>() == null) {
                 break;
             }
-            if (cover == ignoreCov) continue;
-            if (!IsActive (cover)) continue;
+            if (cover == ignoreCov) {
+                continue;
+            }
+            if (!IsActive (cover)) {
+                continue;
+            }
             yield return cover;
         }
 

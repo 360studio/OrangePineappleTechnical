@@ -25,6 +25,7 @@ MonoBehaviour:
   - _name: EndShoot
   - _name: None
   - _name: CoverMove
+  - _name: Crouch
   _projectileData: []
   _effectData: []
   _abilityData:
@@ -76,4 +77,11 @@ MonoBehaviour:
     _script:
       _classRef: CoverMove, Assembly-CSharp
     _listenInputCode: CoverMove
+    _informationGather: 0
+  - _name: FPSCrouch
+    _description: 
+    _icon: {fileID: 0}
+    _script:
+      _classRef: FPSCrouch, Assembly-CSharp
+    _listenInputCode: Crouch
     _informationGather: 0
