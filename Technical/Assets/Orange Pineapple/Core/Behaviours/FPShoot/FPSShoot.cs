@@ -17,6 +17,10 @@ namespace Lockstep
 
         public ShootType ShootType { get { return _shootType; } }
 
+        [SerializeField,DataCode("Projectiles")]
+        private string _projCode;
+        public string ProjCode {get {return _projCode;}}
+
         #region Lockstep
 
         [Lockstep (true)]
@@ -96,15 +100,21 @@ namespace Lockstep
 
         }
 
+
         private void Fire()
         {
             if (this.ShootType == ShootType.Single)
                 this.IsFiring = false;
             this.FireCount = FirePeriod;
+
+            FPSTurn turn = Agent.GetAbility<FPSTurn>();
+            LSProjectile projectile = ProjectileManager.Create (this.ProjCode,Agent,new Vector2dHeight(0,0,turn.CameraHeight),(agent)=>agent.Body.TestFlash());
+            projectile.InitializeFree(turn.ForwardRotation, turn.Slope);
+
+            ProjectileManager.Fire(projectile);
             foreach (var body in Turner.GetBodiesInLine(FixedMath.Create(1000)))
             {
-                if (body.ID != this.Agent.Body.ID)
-                body.TestFlash();
+
             }
         }
 

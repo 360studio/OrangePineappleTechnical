@@ -26,7 +26,11 @@ MonoBehaviour:
   - _name: None
   - _name: CoverMove
   - _name: Crouch
-  _projectileData: []
+  _projectileData:
+  - _name: TestBullet
+    _description: 
+    _icon: {fileID: 0}
+    _prefab: {fileID: 167620, guid: c66f26e1334624436b02ffa752fe63a2, type: 2}
   _effectData: []
   _abilityData:
   - _name: Move
