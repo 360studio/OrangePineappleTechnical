@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firePeriod: 4
-  _shootType: 1
+  _shootType: 0
   _projCode: TestBullet
 --- !u!114 &11422876
 MonoBehaviour:
@@ -647,7 +647,7 @@ MonoBehaviour:
     x: 0
     y: 0
   _canMove: 1
-  _canTurn: 1
+  _canTurn: 0
   _speed: 524288
   _acceleration: 65536
   _canPathfind: 1
