@@ -5,7 +5,8 @@ using Lockstep.Data;
 public class FPSHelper : BehaviourHelper {
     public static FPSHelper Instance {get; private set;}
     public ushort RegisterCode {get; private set;}
-
+    [SerializeField]
+    private Vector2d _spawnPos = new Vector2d(175,50);
 
     [SerializeField, DataCode ("Agents")]
     private string _FPSAgentCode;
@@ -40,7 +41,7 @@ public class FPSHelper : BehaviourHelper {
     {
         if (com.InputCode == RegisterCode) {
             AgentController cont = AgentController.Create();
-            var agent = cont.CreateAgent(this._FPSAgentCode);
+            var agent = cont.CreateAgent(this._FPSAgentCode,_spawnPos);
             int playerID = (int)com.GetData<DefaultData> ().Value;
             if (playerID == ClientManager.ClientID) {
                 PlayerManager.AddController(cont);

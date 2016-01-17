@@ -19,6 +19,9 @@ namespace Lockstep
         private bool _looped;
         public bool Looped { get { return _looped && Points.Length > 2; } }
 
+        [SerializeField]
+        private bool _inverted;
+
         private long[] _pointDistances;
 
         public long[] PointDistances { get { return _pointDistances; } }
@@ -183,6 +186,8 @@ namespace Lockstep
                 return Vector2d.zero;
                 ;
             }
+            if (_inverted)
+                degree = -degree;
             if (Looped) {
                 degree = degree.Mod(FixedMath.One);
             }
@@ -213,6 +218,19 @@ namespace Lockstep
 
             }
             throw new System.Exception();
+        }
+
+        void Reset () {
+            LSBody body = this.GetComponent<LSBody> ();
+            if (body.Shape == ColliderType.Polygon) {
+                
+                this._points = new Vector2d[ body.Vertices.Length];
+                for (int i = 0; i < _points.Length; i++) {
+                    Vector2d point = body.Vertices[i];
+                    point.RotateInverse(0,FixedMath.One);
+                    _points[i] = point;
+                }
+            }
         }
     }
 }

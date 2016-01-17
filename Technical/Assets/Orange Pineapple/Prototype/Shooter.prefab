@@ -35,6 +35,7 @@ GameObject:
   - 114: {fileID: 11413744}
   - 114: {fileID: 11464694}
   - 114: {fileID: 11424378}
+  - 114: {fileID: 11469126}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -670,6 +671,18 @@ MonoBehaviour:
   smoothTime: 15
   minVertical: -80
   maxVertical: 80
+--- !u!114 &11469126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f42d52091a614957912ec7da50c9027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mapIndex: 0
 --- !u!124 &12493208
 Behaviour:
   m_ObjectHideFlags: 1
