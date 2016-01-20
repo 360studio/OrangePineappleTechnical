@@ -46,7 +46,7 @@ namespace Lockstep
 
         public Vector2dHeight Forward { get; private set; }
 
-        public Vector2d ForwardRotation { get; private set; }
+        public Vector2d ForwardDirection { get; private set; }
 
         public long Slope { get; private set; }
 
@@ -121,10 +121,10 @@ namespace Lockstep
 
         private void CalculateRotationValues()
         {
-            Vector2d newRot = Forward.ToVector2d();
+            Vector2d newRot = Forward.ToVector2d().ToRotation();
             long newRotMag;
             newRot.Normalize(out newRotMag);
-            this.ForwardRotation = newRot;
+            this.ForwardDirection = newRot.ToDirection();
             Slope = Forward.Height.Div(newRotMag);
             this.Agent.Body.Rotation = newRot;
             this.TargetVisualRotation = Quaternion.LookRotation(Forward.ToVector3());
@@ -158,7 +158,7 @@ namespace Lockstep
         public IEnumerable<LSBody> GetBodiesInLine(long range)
         {
             Vector2d start = this.Agent.Body.Position;
-            Vector2d end = start + this.ForwardRotation * range;
+            Vector2d end = start + this.ForwardDirection * range;
             foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
             {
                 if (body.ID == Agent.Body.ID)

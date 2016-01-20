@@ -50,6 +50,7 @@ public class FPSInterfacingHelper : InterfacingHelper
 
     protected override void OnVisualize()
     {
+        if (LockstepManager.GameStarted == false) return;
         double sendRate = 1d / (LockstepManager.FrameCount / LockstepManager.InfluenceResolution);
         accumulator += (double)Time.deltaTime;
         if (accumulator >= sendRate)

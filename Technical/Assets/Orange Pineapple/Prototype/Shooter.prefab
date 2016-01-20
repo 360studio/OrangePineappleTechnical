@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firePeriod: 4
-  _shootType: 0
+  _shootType: 1
   _projCode: TestBullet
 --- !u!114 &11422876
 MonoBehaviour:
@@ -601,6 +601,7 @@ MonoBehaviour:
     x: 0
     y: 0
   RealPoints: []
+  Edges: []
   EdgeNorms: []
   PastGridXMin: 0
   PastGridXMax: 0

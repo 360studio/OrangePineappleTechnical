@@ -77,8 +77,9 @@ MonoBehaviour:
   Position:
     x: 0
     y: 0
-  _speed: 4194304
+  _speed: 8388608
   CurrentHeight: 0
+  _visualArc: 0
   _delay: 0
   _attachEndEffectToTarget: 0
   _endEffect: 
@@ -107,7 +108,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _speed
-      value: 4194304
+      value: 8388608
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

@@ -38,6 +38,8 @@ namespace Lockstep
 
         #endregion
 
+        int PassedFrames {get; set;}
+
         protected override void OnSetup()
         {
             FireCount = FirePeriod;
@@ -52,8 +54,15 @@ namespace Lockstep
         {
             if (com.InputCode == StartShootCode || com.InputCode == EndShootCode)
             {
+                
                 if (com.InputCode == StartShootCode)
+                {
+                    this.CheckFire();
                     this.IsFiring = true;
+                    int comFrame = (int)com.GetData<DefaultData>().Value;
+                    PassedFrames = LockstepManager.FrameCount - comFrame;
+
+                }
                 else if (com.InputCode == EndShootCode)
                     this.IsFiring = false;
             }
@@ -62,6 +71,9 @@ namespace Lockstep
         private Command _GenerateFireCommand(bool startShoot)
         {
             Command com = new Command(startShoot ? StartShootCode : EndShootCode, this.Agent.Controller.ControllerID);
+            if (startShoot) {
+            com.Add<DefaultData> (new DefaultData(DataType.Int,LockstepManager.FrameCount));
+            }
             return com;
         }
             
@@ -89,15 +101,18 @@ namespace Lockstep
         protected override void OnSimulate()
         {
             FireCount--;
+            this.CheckFire();
+
+        }
+        private void CheckFire () {
             if (IsFiring)
             {
                 if (FireCount <= 0)
                 {
-                    
+
                     this.Fire();
                 }
             }
-
         }
 
 
@@ -109,12 +124,15 @@ namespace Lockstep
 
             FPSTurn turn = Agent.GetAbility<FPSTurn>();
             LSProjectile projectile = ProjectileManager.Create (this.ProjCode,Agent,new Vector2dHeight(0,0,turn.CameraHeight),(agent)=>agent.Body.TestFlash());
-            projectile.InitializeFree(turn.ForwardRotation, turn.Slope);
+            projectile.InitializeFree(turn.ForwardDirection, turn.Slope);
 
             ProjectileManager.Fire(projectile);
-            foreach (var body in Turner.GetBodiesInLine(FixedMath.Create(1000)))
-            {
 
+            if (this.PassedFrames > 0) {
+                Debug.Log(PassedFrames);
+                long compensation = FixedMath.Create((long)PassedFrames,32);
+                PassedFrames = 0;
+                projectile.RaycastMove(turn.ForwardDirection * compensation,turn.Forward.Height.Mul(compensation));
             }
         }
 

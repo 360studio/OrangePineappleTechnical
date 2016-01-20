@@ -21,6 +21,7 @@ namespace Lockstep
 
         [SerializeField]
         private bool _inverted;
+        public bool Inverted {get {return _inverted;}}
 
         private long[] _pointDistances;
 
@@ -73,7 +74,7 @@ namespace Lockstep
 
 
         public long GetDegreeSpeed (long nonTimescaledSpeed) {
-            return nonTimescaledSpeed.Div(this.TotalLength) / LockstepManager.FrameRate;
+            return nonTimescaledSpeed.Div(this.TotalLength) / LockstepManager.FrameRate * (Inverted ? -1 : 1);
         }
 
         private void CalculateDistancesAndAxes()
@@ -186,8 +187,7 @@ namespace Lockstep
                 return Vector2d.zero;
                 ;
             }
-            if (_inverted)
-                degree = -degree;
+
             if (Looped) {
                 degree = degree.Mod(FixedMath.One);
             }
@@ -195,6 +195,8 @@ namespace Lockstep
             if (degree < 0) degree = 0;
             if (degree > FixedMath.One) degree = FixedMath.One;
             }
+
+
             //TODO: Degree guards
 
             long degreeMag = TotalLength.Mul(degree);
