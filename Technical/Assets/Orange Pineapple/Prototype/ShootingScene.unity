@@ -193,11 +193,11 @@ MonoBehaviour:
   _points:
   - x: -11992
     y: -167413
-  - x: 137735
+  - x: 136811
     y: -119866
-  - x: 180522
+  - x: 179598
     y: 61377
-  - x: 91139
+  - x: 90215
     y: 161377
   - x: -18401
     y: 188781
@@ -302,103 +302,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _environmentBodies:
-  - Body: {fileID: 524921815}
-    Position:
-      _x: 947650
-      _y: -136970
-      _height: 0
-    Rotation:
-      x: -36647
-      y: 54331
-  - Body: {fileID: 2091685627}
-    Position:
-      _x: 648151
-      _y: 670433
-      _height: 198574
-    Rotation:
-      x: 0
-      y: 65536
   - Body: {fileID: 238864990}
     Position:
       _x: 484966
       _y: -425984
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 386060026}
     Position:
       _x: 131072
       _y: 1184890
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
+  - Body: {fileID: 524921815}
+    Position:
+      _x: 947650
+      _y: -136970
+      _height: 0
+    Rotation:
+      x: 54331
+      y: -36647
   - Body: {fileID: 851145638}
     Position:
       _x: 335544
       _y: -27525
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 878969685}
     Position:
       _x: -1011220
       _y: 87818
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 1027693952}
     Position:
       _x: -276561
       _y: -717619
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 1176487493}
     Position:
       _x: 57671
       _y: 488243
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 1310276910}
     Position:
       _x: 0
       _y: -340787
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 1390814170}
     Position:
       _x: -335544
       _y: 492830
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
   - Body: {fileID: 1603891593}
     Position:
       _x: -400424
       _y: 106823
       _height: 0
     Rotation:
-      x: 0
-      y: 65536
+      x: 65536
+      y: 0
+  - Body: {fileID: 2091685627}
+    Position:
+      _x: 648151
+      _y: 670433
+      _height: 198574
+    Rotation:
+      x: 65536
+      y: 0
   _environmentObjects:
-  - {fileID: 524921818}
-  - {fileID: 524921817}
-  - {fileID: 2091685626}
-  - {fileID: 2091685625}
   - {fileID: 238864988}
   - {fileID: 238864989}
   - {fileID: 386060025}
   - {fileID: 386060028}
+  - {fileID: 524921817}
+  - {fileID: 524921818}
   - {fileID: 851145636}
   - {fileID: 851145637}
   - {fileID: 878969684}
@@ -413,6 +411,8 @@ MonoBehaviour:
   - {fileID: 1390814169}
   - {fileID: 1603891591}
   - {fileID: 1603891592}
+  - {fileID: 2091685625}
+  - {fileID: 2091685626}
 --- !u!4 &357143950
 Transform:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
     y: 5306
   - x: 61245
     y: -210053
-  - x: 177261
+  - x: 177153
     y: -127317
   - x: 83357
     y: 150154
@@ -1515,10 +1515,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 11413744, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
-      propertyPath: _firePeriod
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
   m_IsPrefabParent: 0
@@ -1925,6 +1921,7 @@ GameObject:
   - 114: {fileID: 1569661045}
   - 114: {fileID: 1569661055}
   - 114: {fileID: 1569661049}
+  - 114: {fileID: 1569661056}
   - 114: {fileID: 1569661057}
   m_Layer: 0
   m_Name: Manager
@@ -2088,6 +2085,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fb8c5f07819423e8b5d9c08b79bf89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1569661056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1569661044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6c5ce8a0a0c4891b9f8fe26f885f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1569661057
@@ -2588,22 +2596,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
---- !u!1 &1881361731 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 123852, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
-  m_PrefabInternal: {fileID: 1245724534}
---- !u!114 &1881361732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1881361731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1314a676d9a0e41a4bab2c581f058c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _directMessages: 1
 --- !u!1 &1896011690
 GameObject:
   m_ObjectHideFlags: 0

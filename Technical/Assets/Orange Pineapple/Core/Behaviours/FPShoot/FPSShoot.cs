@@ -123,16 +123,18 @@ namespace Lockstep
             this.FireCount = FirePeriod;
 
             FPSTurn turn = Agent.GetAbility<FPSTurn>();
-            LSProjectile projectile = ProjectileManager.Create (this.ProjCode,Agent,new Vector2dHeight(0,0,turn.CameraHeight),(agent)=>agent.Body.TestFlash());
-            projectile.InitializeFree(turn.ForwardDirection, turn.Slope);
-
+            int bodyID = Agent.Body.ID;
+            LSProjectile projectile = ProjectileManager.Create (this.ProjCode,Agent,new Vector3d(0,0,turn.CameraHeight + this.Agent.Body.HeightPos),AllegianceType.All,(agent)=>true,(agent)=>agent.Body.TestFlash());
+            projectile.InitializeFree(turn.Forward,(body) => body.ID != bodyID);
             ProjectileManager.Fire(projectile);
 
             if (this.PassedFrames > 0) {
-                Debug.Log(PassedFrames);
                 long compensation = FixedMath.Create((long)PassedFrames,32);
                 PassedFrames = 0;
-                projectile.RaycastMove(turn.ForwardDirection * compensation,turn.Forward.Height.Mul(compensation));
+
+                Vector3d delta = this.Turner.Forward;
+                delta.Mul(compensation);
+                projectile.RaycastMove(delta);
             }
         }
 

@@ -44,11 +44,10 @@ namespace Lockstep
         }
 
 
-        public Vector2dHeight Forward { get; private set; }
+        public Vector3d Forward { get; private set; }
 
-        public Vector2d ForwardDirection { get; private set; }
+        public Vector2d Forward2d { get; private set; }
 
-        public long Slope { get; private set; }
 
 
         public Quaternion TargetVisualRotation { get; private set; }
@@ -114,7 +113,7 @@ namespace Lockstep
 
         protected override void OnExecute(Command com)
         {
-            Vector2dHeight forward = com.GetData<Vector2dHeight>();
+            Vector3d forward = com.GetData<Vector3d>();
             Forward = forward;
             this.CalculateRotationValues();
         }
@@ -124,8 +123,7 @@ namespace Lockstep
             Vector2d newRot = Forward.ToVector2d().ToRotation();
             long newRotMag;
             newRot.Normalize(out newRotMag);
-            this.ForwardDirection = newRot.ToDirection();
-            Slope = Forward.Height.Div(newRotMag);
+            this.Forward2d = newRot.ToDirection();
             this.Agent.Body.Rotation = newRot;
             this.TargetVisualRotation = Quaternion.LookRotation(Forward.ToVector3());
         }
@@ -149,17 +147,20 @@ namespace Lockstep
         public Command GenerateTurnCommand(Vector3 forwards)
         {
             Command com = new Command(this.Interfacer.ListenInputID, this.Agent.Controller.ControllerID);
-            Vector2dHeight vecHeight = new Vector2dHeight(forwards);
-            com.Add<Vector2dHeight>(vecHeight);
+            Vector3d vecHeight = new Vector3d(forwards);
+            com.Add<Vector3d>(vecHeight);
             return com;
 
         }
 
         public IEnumerable<LSBody> GetBodiesInLine(long range)
         {
-            Vector2d start = this.Agent.Body.Position;
-            Vector2d end = start + this.ForwardDirection * range;
-            foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end,Agent.Body.HeightPos + CameraHeight,Slope))
+            Vector3d start = this.Agent.Body._position.ToVector3d(Agent.Body.HeightPos);
+            Vector3d delta = this.Forward;
+            delta.Mul(range);
+            Vector3d end = start;
+            end.Add(ref delta);
+            foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end))
             {
                 if (body.ID == Agent.Body.ID)
                 {
