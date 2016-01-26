@@ -115,6 +115,7 @@ namespace Lockstep
         {
             Vector3d forward = com.GetData<Vector3d>();
             Forward = forward;
+
             this.CalculateRotationValues();
         }
 
@@ -143,10 +144,12 @@ namespace Lockstep
         {
             base.OnSimulate();
         }
-
+        public Vector3d GenerateForwards (Quaternion rotation) {
+            return new Vector3d(rotation * Vector3.forward);
+        }
         public Command GenerateTurnCommand(Vector3 forwards)
         {
-            Command com = new Command(this.Interfacer.ListenInputID, this.Agent.Controller.ControllerID);
+            Command com = new Command(this.Data.ListenInputID, this.Agent.Controller.ControllerID);
             Vector3d vecHeight = new Vector3d(forwards);
             com.Add<Vector3d>(vecHeight);
             return com;
@@ -155,9 +158,10 @@ namespace Lockstep
 
         public IEnumerable<LSBody> GetBodiesInLine(long range)
         {
-            Vector3d start = this.Agent.Body._position.ToVector3d(Agent.Body.HeightPos);
+            Vector3d start = this.Agent.Body._position.ToVector3d(this.CameraHeight);
             Vector3d delta = this.Forward;
             delta.Mul(range);
+
             Vector3d end = start;
             end.Add(ref delta);
             foreach (LSBody body in Lockstep.Raycaster.RaycastAll (start,end))

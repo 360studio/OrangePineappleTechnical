@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e14365092354525b827ca9117ed940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6553600000
+  _speed: 1048576
   _visualArc: 0
   _delay: 0
   _attachEndEffectToTarget: 0
@@ -104,7 +104,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _speed
-      value: -2036334592
+      value: 1048576
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

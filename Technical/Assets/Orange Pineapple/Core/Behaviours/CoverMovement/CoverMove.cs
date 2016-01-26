@@ -62,7 +62,7 @@ public class CoverMove : Move {
     public Command GenerateTransitionCommand () {
         Cover cover = CoverManager.FindCover(CachedTurn.GetBodiesInLine(FixedMath.One * 200),CurrentCover);
         if (cover != null) {
-            Command com = new Command(this.Interfacer.ListenInputID,this.Agent.Controller.ControllerID);
+            Command com = new Command(this.Data.ListenInputID,this.Agent.Controller.ControllerID);
             com.Add<DefaultData> (new DefaultData(DataType.UShort,cover.ID));
             return com;
         }
@@ -70,7 +70,7 @@ public class CoverMove : Move {
     }
     public Command GenerateMovementCommand (float input) {
         if (this.IsTransitioning) return null;
-        Command com = new Command(this.Interfacer.ListenInputID,this.Agent.Controller.ControllerID);
+        Command com = new Command(this.Data.ListenInputID,this.Agent.Controller.ControllerID);
         com.Add<DefaultData> (new DefaultData(DataType.Long,FixedMath.Create(input)));
         return com;
     }

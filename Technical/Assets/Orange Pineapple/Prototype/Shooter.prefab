@@ -524,8 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a778ad0cf2de459f99e68f1b4fd070d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firePeriod: 2
-  _shootType: 1
+  _firePeriod: 4
+  _shootType: 0
   _projCode: TestBullet
 --- !u!114 &11419726
 MonoBehaviour:

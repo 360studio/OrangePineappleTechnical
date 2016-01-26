@@ -1515,6 +1515,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 11413744, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
+      propertyPath: _firePeriod
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413744, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
+      propertyPath: _shootType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77f5d5e2450de4edf99dcd08c8ec338f, type: 2}
   m_IsPrefabParent: 0
@@ -2094,9 +2102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1569661044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da6c5ce8a0a0c4891b9f8fe26f885f34, type: 3}
+  m_Script: {fileID: 11500000, guid: 1314a676d9a0e41a4bab2c581f058c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _directMessages: 0
 --- !u!1 &1596852037
 GameObject:
   m_ObjectHideFlags: 0

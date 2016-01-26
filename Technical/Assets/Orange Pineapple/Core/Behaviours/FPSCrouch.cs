@@ -61,7 +61,7 @@ public class FPSCrouch : ActiveAbility {
 
 
     public Command GenerateCrouchCommand (bool crouch) {
-        Command com = new Command(this.Interfacer.ListenInputID,Agent.Controller.ControllerID);
+        Command com = new Command(this.Data.ListenInputID,Agent.Controller.ControllerID);
         com.Add<DefaultData> (new DefaultData(DataType.Bool,crouch));
         return com;
     }

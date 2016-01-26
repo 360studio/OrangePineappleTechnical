@@ -68,7 +68,7 @@ public class FPSMove : Lockstep.ActiveAbility
 
     public Command GenerateMoveCommand(Vector2 input)
     {
-        Command com = new Command(this.Interfacer.ListenInputID, this.Agent.Controller.ControllerID);
+        Command com = new Command(this.Data.ListenInputID, this.Agent.Controller.ControllerID);
         Vector2d vec = (new Vector2d(input));
         if (vec.FastMagnitude () > FixedMath.One * FixedMath.One) {
             vec.Normalize();
